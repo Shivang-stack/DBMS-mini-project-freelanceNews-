@@ -53,3 +53,18 @@ exports.createArticle = (req, res) =>{
         })
     });
 };
+
+
+exports.removeArticle = (req, res) =>{
+    const article = req.article;
+    article.remove((err, article)=>{
+        if(err){
+            return res.status(400).json({
+                error: "Not able to delete Article"
+            });
+        }
+        res.json({
+            message: "Successfully Deleted"
+        });
+    });
+};
